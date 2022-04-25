@@ -10,6 +10,9 @@ class ContactoCorporativo extends Model
 {
     use HasFactory;
 
+    protected $table = 'tw_contactos_corporativos';
+    public $timestamps = false;
+
     public function Corporativo(): BelongsTo {
         return $this->belongsTo(Corporativo::class);
     }

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Laravel\Passport\Passport;
 
 class SimpleAuthController extends Controller
 {
@@ -28,13 +29,20 @@ class SimpleAuthController extends Controller
     }
 
     public function login(UserLoginRequest $request) {
-        $user = User::where('email', $request->email)->first();
+        /**
+         * @var Usuario $user
+         */
+        $user = Usuario::where('email', $request->email)->first();
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
-                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
+                $tokenResult = $user->createToken('Usuario loggeado', $user->getScopes());
+                $token = $tokenResult->token;
+                $token->expires_at = Carbon::now()->addDays($user->getExpiration());
+                $token->save();
+
                 return response([
-                    'token' => $token,
-                    'msg' => 'Bye!',
+                    'token' => $tokenResult->accessToken,
+                    'msg' => "Hola, $user->S_Nombre!",
                     'success' => true,
                     'exception' => null,
                     'time_execution' => microtime(true) - LARAVEL_START

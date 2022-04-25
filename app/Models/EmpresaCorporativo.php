@@ -11,6 +11,9 @@ class EmpresaCorporativo extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'tw_empresas_corporativos';
+    public $timestamps = false;
+
     public function Corporativo(): BelongsTo {
         return $this->belongsTo(Corporativo::class);
     }

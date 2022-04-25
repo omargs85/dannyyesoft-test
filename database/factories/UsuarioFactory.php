@@ -31,6 +31,7 @@ class UsuarioFactory extends Factory
             'S_Activo' => $this->faker->boolean(),
             'password' => Hash::make('12345'),
             'verified' => '',
+            'rol_usuario' => $this->faker->numberBetween(1, 3)
         ];
     }
 }

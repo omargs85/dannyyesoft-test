@@ -21,3 +21,10 @@ Route::post('/logout', "$simpleAuthControllerClassName@logout");
 Route::post('/password/email', "$simpleAuthControllerClassName@forgot");
 Route::get('/password/verify-token/{token}', "$simpleAuthControllerClassName@verifyToken");
 Route::post('/password/reset', "$simpleAuthControllerClassName@reset");
+
+Route::group([
+    'middleware' => ['auth:api', "scopes:tw_corporativos,tw_empresas_corporativos"]
+], function() {
+    Route::get('/corporativos/{corporativo}', 'App\Http\Controllers\CorporativoController@showCorporativo')
+        ->where(['corporativo' => '[0-9]+']);
+});
