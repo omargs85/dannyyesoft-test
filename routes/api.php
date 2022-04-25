@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\SimpleAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+$simpleAuthControllerClassName = SimpleAuthController::class;
+
+Route::post('/login', "$simpleAuthControllerClassName@login");
+Route::post('/logout', "$simpleAuthControllerClassName@logout");
+Route::post('/password/email', "$simpleAuthControllerClassName@forgot");
+Route::get('/password/verify-token/{token}', "$simpleAuthControllerClassName@verifyToken");
+Route::post('/password/reset', "$simpleAuthControllerClassName@reset");
