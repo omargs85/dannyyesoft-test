@@ -1,0 +1,6 @@
+1. Configurando correctamente los permisos de los archivos del proyecto. Excluyendo el .env con nuestras credenciales
+Usando middlewares. Usando el CSRF token. No permitiendo strings sin sanitizar.
+
+2. artisan make
+
+3. Es necesario instalar el HTTP Client de guzzle.
