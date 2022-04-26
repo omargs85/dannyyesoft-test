@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\Process\Process;
 
 class BackupDBCommand extends Command
 {
@@ -56,10 +57,9 @@ class BackupDBCommand extends Command
             " $tableNames ".
             "  > " .
             storage_path() . "/app/backup/" . $filename;
-        $returnVar = NULL;
-        $output = NULL;
 
-        exec($command, $output, $returnVar);
+        $process = Process::fromShellCommandline($command);
+        $process->run();
         return 0;
     }
 }
