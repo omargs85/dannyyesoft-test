@@ -16,6 +16,6 @@ class Documento extends Model
     protected $casts = ['N_Obligatorio' => 'boolean'];
 
     public function DocumentosCorporativos() {
-        return $this->hasMany(DocumentoCorporativo::class);
+        return $this->hasMany(DocumentoCorporativo::class, 'tw_documentos_id');
     }
 }

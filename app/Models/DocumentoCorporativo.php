@@ -24,6 +24,6 @@ class DocumentoCorporativo extends Model
     }
 
     public function Documento() {
-        return $this->belongsTo(Documento::class, 'tw_docuemntos_id');
+        return $this->belongsTo(Documento::class, 'tw_documentos_id');
     }
 }
