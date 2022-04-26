@@ -10,3 +10,8 @@ Ya que no vi a donde compartir mi colección de Postman, hice un export
 y lo añadí al proyecto: dannyyesoft.postman_collection.json
 
 Saludos!
+
+
+----------
+Postman public link
+https://www.postman.com/collections/b17d0b128d558ebb026f
