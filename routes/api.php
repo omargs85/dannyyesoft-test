@@ -23,14 +23,14 @@ Route::get('/password/verify-token/{token}', "$simpleAuthControllerClassName@ver
 Route::post('/password/reset', "$simpleAuthControllerClassName@reset");
 
 Route::group([
-    'middleware' => ['auth:api', "scopes:tw_corporativos,tw_empresas_corporativos"]
+    'middleware' => ['auth:api', 'cors', "scopes:tw_corporativos,tw_empresas_corporativos"]
 ], function() {
     Route::get('/corporativos/{corporativo}', 'App\Http\Controllers\CorporativoController@showCorporativo')
         ->where(['corporativo' => '[0-9]+']);
 });
 
 Route::group([
-    'middleware' => ['auth:api', "scopes:tw_documentos,tw_documentos_corporativos"]
+    'middleware' => ['auth:api', 'cors', "scopes:tw_documentos,tw_documentos_corporativos"]
 ], function() {
     Route::get('/documentos/{documento}', 'App\Http\Controllers\DocumentoController@showDocumento')
         ->where(['documento' => '[0-9]+']);
