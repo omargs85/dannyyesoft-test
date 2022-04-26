@@ -35,3 +35,9 @@ Route::group([
     Route::get('/documentos/{documento}', 'App\Http\Controllers\DocumentoController@showDocumento')
         ->where(['documento' => '[0-9]+']);
 });
+
+Route::group([
+    'middleware' => ['auth:api', 'cors']
+], function() {
+    Route::get('/backup-db', 'App\Http\Controllers\BackupController@runBackup');
+});
