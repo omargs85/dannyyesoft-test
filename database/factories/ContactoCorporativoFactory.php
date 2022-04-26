@@ -23,7 +23,7 @@ class ContactoCorporativoFactory extends Factory
     {
         return [
             'S_Nombre' => $this->faker->name(),
-            'S_Puesto' => $this->faker->jobTitle(),
+            'S_Puesto' => substr($this->faker->jobTitle(), 0, 45),
             'S_Comentarios' => $this->faker->text(),
             'N_TelefonoFijo' => substr($this->faker->phoneNumber(),0,11),
             'N_TelefonoMovil' => substr($this->faker->phoneNumber(),0,11),

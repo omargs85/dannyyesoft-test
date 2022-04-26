@@ -10,9 +10,12 @@ class Documento extends Model
 {
     use HasFactory;
 
+    protected $table = 'tw_documentos';
+    public $timestamps = false;
+
     protected $casts = ['N_Obligatorio' => 'boolean'];
 
-    public function Corporativos(): BelongsToMany {
-        return $this->belongsToMany(Corporativo::class, 'tw_documentos_corporativos');
+    public function DocumentosCorporativos() {
+        return $this->hasMany(DocumentoCorporativo::class);
     }
 }
